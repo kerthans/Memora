@@ -1,0 +1,11 @@
+{
+    "name": "chrome-extension",
+    "version": "1.0.0",
+    "scripts": {
+      "start": "python3 server/app.py"
+    },
+    "dependencies": {
+      "flask": "^2.0.1"
+    }
+  }
+  

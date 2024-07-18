@@ -1,0 +1,44 @@
+{
+    "manifest_version": 2,
+    "name": "Memora",
+    "version": "2.0",
+    "description": "一个能持久记忆并熟知你各种偏好的prompt增强助手",
+    "permissions": [
+      "activeTab",
+      "storage",
+      "background",
+      "http://localhost:5000/",
+      "https://chatglm.cn/*",
+      "https://tongyi.aliyun.com/*",
+      "https://yiyan.baidu.com/*",
+      "https://kimi.moonshot.cn/*",
+      "https://chatgpt.com/*"
+    ],
+    "browser_action": {
+      "default_popup": "popup.html",
+      "default_icon": {
+        "16": "images/cute.png",
+        "48": "images/cute.png",
+        "128": "images/cute.png"
+      }
+    },
+    "background": {
+      "scripts": ["background.js"],
+      "persistent": false
+    },
+    "content_scripts": [
+      {
+        "matches": [
+          "https://chatglm.cn/*",
+          "https://tongyi.aliyun.com/*",
+          "https://yiyan.baidu.com/*",
+          "https://kimi.moonshot.cn/*",
+          "https://chatgpt.com/*"
+        ],
+        "js": ["content.js"]
+      }
+    ],
+    "web_accessible_resources": [
+        "style.css"
+    ]
+  }

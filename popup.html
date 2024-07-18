@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memora Plugin</title>
+    <style>
+        @keyframes fade-out {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+
+        @keyframes fade-in {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .fade-out {
+            animation: fade-out 0.15s ease-out;
+        }
+
+        .fade-in {
+            animation: fade-in 0.15s ease-in;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            width: 250px;
+            height: 350px;
+            overflow: hidden;
+        }
+        #popup {
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+            position: relative;
+            background-color: var(--bg-color);
+            transition: background-color 0.5s ease;
+        }
+        #inner-content {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.8) 50%, white 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: unset;
+        }
+        #particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        #logo {
+            width: 100px;
+            height: 100px;
+            margin-top: 30px;
+            transition: all 0.5s ease;
+        }
+        #greeting {
+            margin-top: 20px;
+            font-size: 18px;
+            height: 24px;
+            text-align: center;
+        }
+        #strength-control {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #strength-label {
+            font-size: 12px;
+            color: #888;
+            margin-bottom: 10px;
+        }
+        #strength-slider {
+            -webkit-appearance: none;
+            width: 200px;
+            height: 5px;
+            border-radius: 5px;
+            background: linear-gradient(to right, var(--slider-color-start), var(--slider-color-end));
+            outline: none;
+            opacity: 0.7;
+            transition: opacity .2s;
+        }
+        #strength-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #d3d3d3;
+            cursor: pointer;
+            border: 2px solid var(--slider-thumb-color);
+            transition: all 0.5s ease;
+        }
+        #status-info {
+            margin-top: 30px;
+            background: linear-gradient(to right, var(--bg-color-start), var(--bg-color-end));
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        #status-info:hover {
+            transform: scale(1.05);
+        }
+        #status-change-text {
+            margin-top: 10px;
+            font-size: 12px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <div id="popup">
+        <div id="inner-content">
+            <canvas id="particles"></canvas>
+            <img id="logo" src="./images/cute.png" alt="Logo">
+            <div id="greeting"></div>
+            <div id="strength-control">
+                <span id="strength-label">调节记忆强度</span>
+                <input type="range" id="strength-slider" min="0" max="2" step="1" value="1">
+            </div>
+            <button id="status-info">记忆中</button>
+            <div id="status-change-text">更改记忆状态</div>
+        </div>
+    </div>
+    <script src="popup.js"></script>
+</body>
+</html>
